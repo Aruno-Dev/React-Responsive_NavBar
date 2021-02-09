@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="theme-color" content="#000000" /> -->
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+  
+    
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Curry_Column</title>
+    
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <!-- <script src="../src/assets/style/js/Animated.js"></script> -->
+  </body>
+  <!-- <script >
+    (function() {
+      var lastTime = 0;
+      var vendors = ['ms', 'moz', 'webkit', 'o'];
+      for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+          window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+          window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+                                     || window[vendors[x]+'CancelRequestAnimationFrame'];
+      }
+   
+      if (!window.requestAnimationFrame)
+          window.requestAnimationFrame = function(callback, element) {
+              var currTime = new Date().getTime();
+              var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+              var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+                timeToCall);
+              lastTime = currTime + timeToCall;
+              return id;
+          };
+   
+      if (!window.cancelAnimationFrame)
+          window.cancelAnimationFrame = function(id) {
+              clearTimeout(id);
+          };
+  }());
+  
+  var Nodes = {
+  
+    // Settings
+    density: 8,
+    reactionSensitivity: 20,
+  
+    points: [],
+    lines: [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],
+    mouse: { x: -1000, y: -1000, down: false },
+  
+    animation: null,
+  
+    canvas: null,
+    context: null,
+  
+    init: function() {
+      // Set up the visual canvas 
+      this.canvas = document.getElementById( 'stripes' );
+      this.context = this.canvas.getContext( '2d' );
+      this.context.lineJoin = 'bevel';
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight ;
+      this.canvas.style.display = 'block';
+      this.canvas.style.background = 'transparent'
+  
+      this.canvas.addEventListener('mousemove', this.mouseMove, false);
+      this.canvas.addEventListener('mousedown', this.mouseDown, false);
+      this.canvas.addEventListener('mouseup',   this.mouseUp,   false);
+      this.canvas.addEventListener('mouseout',  this.mouseOut,  false);
+  
+      window.onresize = function(event) {
+        Nodes.canvas.width = window.innerWidth;
+        Nodes.canvas.height = Math.max(window.innerHeight, 670);
+        Nodes.onWindowResize();    
+      }
+  
+      this.preparePoints();
+      this.draw();
+      
+    },
+  
+    preparePoints: function() {
+  
+      // Clear the current points
+      this.points = [];
+      this.lines = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+      
+      var width, height, i;
+      var center = window.innerHeight / 2;
+  
+      for( i = -10; i < this.canvas.width + 10; i += this.density ) {
+  
+        var line1 = {y: center - 17, originalY: center - 10, color: '#ffebee'};
+        var line2 = {y: center - 17, originalY: center - 13, color: '#ffebee'};
+        var line3 = {y: center - 17, originalY: center - 16, color: '#ffcdd2'};
+        var line4 = {y: center - 17, originalY: center - 19, color: '#ef9a9a'};
+        var line5 = {y: center - 17, originalY: center - 22, color: '#e57373'};
+        var line6 = {y: center - 17, originalY: center - 25, color: '#ef5350'};
+        var line7 = {y: center - 17, originalY: center - 28, color: '#f44336'};
+        var line8 = {y: center - 17, originalY: center - 31, color: '#e53935'};
+        var line9 = {y: center - 17, originalY: center - 34, color:  '#d32f2f'};
+        var line10 = {y: center - 17, originalY: center - 37, color: '#c62828'};
+        var line11 = {y: center - 17, originalY: center - 40, color: '#b71c1c'};
+        var line12 = {y: center - 17, originalY: center - 43, color: '#c62828'};
+        var line13 = {y: center - 17, originalY: center - 46, color: '#d32f2f'};
+        var line14 = {y: center - 17, originalY: center - 49, color: '#e53935'};
+        var line15 = {y: center - 17, originalY: center - 52, color: '#f44336'};
+        var line16 = {y: center - 17, originalY: center - 55, color: '#ef5350'};
+        var line17 = {y: center - 17, originalY: center - 58, color: '#e57373'};
+        var line18 = {y: center - 17, originalY: center - 61, color: '#ef9a9a'};
+        var line19 = {y: center - 17, originalY: center - 64, color: '#ffcdd2'};
+        var line20 = {y: center - 17, originalY: center - 67, color: '#ffcdd2'};
+        var line21 = {y: center - 17, originalY: center - 70, color: '#ffebee'};
+  
+        line1["x"] =  i;
+        line1["originalX"] = i;
+        
+        line2["x"] =  i;
+        line2["originalX"] = i;
+
+        line3["x"] =  i;
+        line3["originalX"] = i;
+
+        line4["x"] =  i;
+        line4["originalX"] = i;
+
+        line5["x"] =  i;
+        line5["originalX"] = i;
+        
+        line6["x"] =  i;
+        line6["originalX"] = i;
+
+        line7["x"] =  i;
+        line7["originalX"] = i;
+
+        line8["x"] =  i;
+        line8["originalX"] = i;
+
+        line9["x"] =  i;
+        line9["originalX"] = i;
+        
+        line10["x"] =  i;
+        line10["originalX"] = i;
+
+        line11["x"] =  i;
+        line11["originalX"] = i;
+
+        line12["x"] =  i;
+        line12["originalX"] = i;
+
+        line13["x"] =  i;
+        line13["originalX"] = i;
+        
+        line14["x"] =  i;
+        line14["originalX"] = i;
+
+        line15["x"] =  i;
+        line15["originalX"] = i;
+
+        line16["x"] =  i;
+        line16["originalX"] = i;
+
+        line17["x"] =  i;
+        line17["originalX"] = i;
+
+        line18["x"] =  i;
+        line18["originalX"] = i;
+
+        line19["x"] =  i;
+        line19["originalX"] = i;
+
+        line20["x"] =  i;
+        line20["originalX"] = i;
+
+        line21["x"] =  i;
+        line21["originalX"] = i;
+      
+        this.points.push(line1);
+        this.points.push(line2);
+        this.points.push(line3);
+        this.points.push(line4);
+        this.points.push(line5);
+        this.points.push(line6);
+        this.points.push(line7);
+        this.points.push(line8);
+        this.points.push(line9);
+        this.points.push(line10);
+        this.points.push(line11);
+        this.points.push(line12);
+        this.points.push(line13);
+        this.points.push(line14);
+        this.points.push(line15);
+        this.points.push(line16);
+        this.points.push(line17);
+        this.points.push(line18);
+        this.points.push(line19);
+        this.points.push(line20);
+        this.points.push(line21);
+        
+        this.lines[0].push(line1);
+        this.lines[1].push(line2);
+        this.lines[2].push(line3);
+        this.lines[3].push(line4);
+        this.lines[4].push(line5);
+        this.lines[5].push(line6);
+        this.lines[6].push(line7);
+        this.lines[7].push(line8);
+        this.lines[8].push(line9);
+        this.lines[9].push(line10);
+        this.lines[10].push(line11);
+        this.lines[11].push(line12);
+        this.lines[12].push(line13);
+        this.lines[13].push(line14);
+        this.lines[14].push(line15);
+        this.lines[15].push(line16);
+        this.lines[16].push(line17);
+        this.lines[17].push(line18);
+        this.lines[18].push(line19);
+        this.lines[19].push(line20);
+        this.lines[20].push(line21);
+      }
+    },
+  
+    updatePoints: function() {
+  
+      var i, currentPoint, theta, distance;
+      
+      for (i = 0; i < this.points.length; i++ ){
+  
+        currentPoint = this.points[i];
+  
+        theta = Math.atan2( currentPoint.y - this.mouse.y, currentPoint.x - this.mouse.x);
+  
+        if ( this.mouse.down ) {
+          distance = this.reactionSensitivity * 10 / Math.sqrt((this.mouse.x - currentPoint.x) * (this.mouse.x - currentPoint.x) +
+           (this.mouse.y - currentPoint.y) * (this.mouse.y - currentPoint.y));
+        } else {
+          distance = this.reactionSensitivity * 10 / Math.sqrt((this.mouse.x - currentPoint.x) * (this.mouse.x - currentPoint.x) +
+           (this.mouse.y - currentPoint.y) * (this.mouse.y - currentPoint.y));  
+        }
+        
+        currentPoint.x += Math.cos(theta) * distance + (currentPoint.originalX - currentPoint.x) * 0.05;
+        currentPoint.y += Math.sin(theta) * distance + (currentPoint.originalY - currentPoint.y) * 0.05;
+  
+      }
+    },
+  
+    drawPoints: function() {
+  
+      var i, currentPoint;
+  
+      for (i = 0; i < 21; i++) {
+        var line = this.lines[i];
+        this.context.beginPath();
+        this.context.lineJoin = 'round';
+        this.context.moveTo( line[0].x, line[0].y);
+        this.context.strokeStyle = line[0].color;
+        this.context.lineWidth = 10;
+        for (var j = 1; j < line.length - 2; j++) {
+          var point = line[j];
+  
+          var xc = (point.x + line[j + 1].x) / 2;
+          var yc = (point.y + line[j + 1].y) / 2;
+  
+          this.context.quadraticCurveTo(point.x, point.y, xc, yc);
+  
+        }
+        this.context.stroke();
+        this.context.closePath();
+      }
+    },
+  
+    draw: function() {
+      this.animation = requestAnimationFrame( function(){ Nodes.draw() } );
+  
+      this.clear();
+      this.updatePoints();
+      this.drawPoints();
+  
+    },
+  
+    clear: function() {
+      this.canvas.width = this.canvas.width;
+    },
+  
+    mouseDown: function( event ){
+      Nodes.mouse.down = true;
+    },
+  
+    mouseUp: function( event ){
+      Nodes.mouse.down = false;
+    },
+    
+    mouseMove: function(event){
+      Nodes.mouse.x = event.pageX;
+      Nodes.mouse.y = event.pageY;
+    },
+    
+    mouseOut: function(event){
+      Nodes.mouse.x = -1000;
+      Nodes.mouse.y = -1000;
+      Nodes.mouse.down = false;
+    },
+  
+    // Resize and redraw the canvas.
+    onWindowResize: function() {
+      cancelAnimationFrame( this.animation );
+      this.preparePoints();
+      this.draw();
+    }
+  
+  }
+  
+      // Start the app. 
+      setTimeout( function() {
+        Nodes.init();
+      }, 10);
+  </script> -->
+</html>
